@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+#MISE description="Create a jj workspace for an agent to work in beside others"
+#USAGE arg "<id>" help="The number that names the workspace"
+#USAGE arg "[base]" help="The revision to start from"
+
+set -e
+
+id="$1"
+dir="$(scripts/util/workspace "$id")"
+
+mkdir -p "$(dirname "$dir")"
+jj workspace add "$dir" --name "ws${id}" -r "${2:-@-}"
+[ -f .env ] && cp .env "$dir/.env"
+
+cd "$dir"
+mise trust --quiet .config/mise.toml
+mise run setup

@@ -1,0 +1,3 @@
+{
+  "Exclude": ["^\\.claude/worktrees/", "^\\.idea/", "^\\.mise/", "^\\.mise-data/", "^LICENSE$", "^tests/ui/.*\\.stderr$"]
+}

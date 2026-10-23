@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  cancel-in-progress: true
+  group: ci-${{ forgejo.ref }}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: https://code.forgejo.org/actions/checkout@v7
+
+      - name: Install the pinned tools
+        run: |
+          curl -fsSL https://mise.run | sh
+          echo "$HOME/.local/bin" >> "$FORGEJO_PATH"
+          "$HOME/.local/bin/mise" install --locked
+
+      - name: Install the dependencies
+        run: mise run setup:dependencies
+
+      - name: Lint
+        run: mise run lint
+
+  msrv:
+    name: MSRV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: https://code.forgejo.org/actions/checkout@v7
+
+      - name: Install the pinned tools
+        run: |
+          curl -fsSL https://mise.run | sh
+          echo "$HOME/.local/bin" >> "$FORGEJO_PATH"
+          "$HOME/.local/bin/mise" install --locked
+
+      - name: Install the dependencies
+        run: mise run setup:dependencies
+
+      - name: Check the minimum Rust versions
+        run: mise run check:msrv
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    env:
+      JERB_TEST_MYSQL_URL: mysql://root:jerb@mysql:3306
+      JERB_TEST_POSTGRES_URL: postgres://postgres:postgres@postgres:5432/postgres
+      JERB_TEST_REDIS_URL: redis://redis:6379
+    services:
+      mysql:
+        env:
+          MYSQL_ROOT_PASSWORD: jerb
+        image: mysql:8
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -pjerb" --health-interval 5s --health-retries 20 --health-timeout 5s
+        ports:
+          - 3306:3306
+      postgres:
+        env:
+          POSTGRES_PASSWORD: postgres
+        image: postgres:17
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+        ports:
+          - 5432:5432
+      redis:
+        image: redis:7
+        options: --health-cmd "redis-cli ping" --health-interval 2s --health-timeout 5s --health-retries 10
+        ports:
+          - 6379:6379
+    steps:
+      - name: Check out the repository
+        uses: https://code.forgejo.org/actions/checkout@v7
+
+      - name: Install the pinned tools
+        run: |
+          curl -fsSL https://mise.run | sh
+          echo "$HOME/.local/bin" >> "$FORGEJO_PATH"
+          "$HOME/.local/bin/mise" install --locked
+
+      - name: Install the dependencies
+        run: mise run setup:dependencies
+
+      - name: Test
+        run: mise run test

@@ -1,0 +1,19 @@
+[package]
+categories = ["asynchronous", "concurrency"]
+description = "Procedural macros for defining and registering Jerb background jobs."
+edition = "2024"
+include = ["LICENSE", "src/**/*"]
+keywords = ["background-jobs", "job-queue", "jerb", "macro", "worker"]
+license = "MIT"
+name = "jerb-macros"
+readme = "../README.md"
+repository = "https://aaronmallen.dev/aaron/jerb"
+rust-version = "1.85"
+version = "0.1.0"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1"
+syn = { version = "2", features = ["full"] }

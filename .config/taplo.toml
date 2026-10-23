@@ -1,0 +1,10 @@
+exclude = [
+  ".claude/worktrees/**",
+  ".git/**",
+  ".jj/**",
+  ".mise/**",
+  ".mise-data/**",
+  "node_modules/**",
+  "target/**",
+]
+include = ["**/*.toml"]

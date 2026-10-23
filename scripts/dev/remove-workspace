@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+#MISE description="Forget a workspace and delete its directory"
+#USAGE arg "<id>" help="The number the workspace was created with"
+
+set -e
+
+id="$1"
+dir="$(scripts/util/workspace "$id")"
+
+jj workspace forget "ws${id}"
+rm -rf "$dir"

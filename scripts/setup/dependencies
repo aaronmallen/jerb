@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+#MISE description="Install every tool the project needs"
+#MISE alias=["setup:deps", "su:dependencies", "su:deps"]
+
+set -e
+
+mise trust >/dev/null 2>&1
+mise install
+cargo fetch

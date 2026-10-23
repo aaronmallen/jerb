@@ -1,0 +1,13 @@
+**/*.rs.bk
+**/mutants.out*/
+*.pdb
+.claude/settings.local.json
+.claude/worktrees
+.env
+.mise
+.mise-data
+coverage
+debug
+rustc-ice-*.txt
+target
+tmp

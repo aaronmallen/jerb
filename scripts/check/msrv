@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+#MISE description="Check that each crate builds on the Rust version its Cargo.toml declares"
+#MISE alias=["c:msrv"]
+
+set -e
+
+# Reads `rust-version` from the Cargo.toml in $1.
+msrv() {
+  sed -n 's/^rust-version = "\(.*\)"$/\1/p' "$1"
+}
+
+jerb="$(msrv Cargo.toml)"
+macros="$(msrv macros/Cargo.toml)"
+
+mise install "rust@${jerb}" "rust@${macros}"
+mise exec "rust@${jerb}" -- cargo check --package jerb --all-features --locked
+mise exec "rust@${macros}" -- cargo check --package jerb-macros --locked
