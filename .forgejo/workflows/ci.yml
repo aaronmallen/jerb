@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+env:
+  MISE_SKILLS_FETCH: "false"
+  MISE_SKILLS_AUTO_SYNC: "false"
+
 concurrency:
   cancel-in-progress: true
   group: ci-${{ forgejo.ref }}
