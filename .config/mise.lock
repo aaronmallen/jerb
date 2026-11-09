@@ -2,21 +2,6 @@
 
 lockfile_version = 3
 
-[[tools."cargo:cargo-llvm-cov"]]
-version = "0.9.1"
-backend = "cargo:cargo-llvm-cov"
-specifiers = ["latest"]
-
-[[tools."cargo:cargo-nextest"]]
-version = "0.9.148"
-backend = "cargo:cargo-nextest"
-specifiers = ["latest"]
-
-[[tools."cargo:cargo-sort"]]
-version = "2.1.4"
-backend = "cargo:cargo-sort"
-specifiers = ["latest"]
-
 [[tools.editorconfig-checker]]
 version = "4.0.2"
 backend = "github:editorconfig-checker/editorconfig-checker"
@@ -62,6 +47,132 @@ provenance = "github-attestations"
 checksum = "sha256:857f8f74dfc259d73dac93573e37cf3ce01150787d7b139bf839549cc6b5beb9"
 url = "https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v4.0.2/editorconfig-checker-windows-amd64.zip"
 url_api = "https://api.github.com/repos/editorconfig-checker/editorconfig-checker/releases/assets/574675794"
+provenance = "github-attestations"
+
+[[tools."github:DevinR528/cargo-sort"]]
+version = "2.1.4"
+backend = "github:DevinR528/cargo-sort"
+specifiers = ["latest"]
+
+[tools."github:DevinR528/cargo-sort"."platforms.linux-x64"]
+checksum = "sha256:c35c3df1f2e512890ee2ffd6151aa265fbfe06accbea0d9226e0bb14d821845b"
+checksum_source = "mise-versions"
+url = "https://github.com/DevinR528/cargo-sort/releases/download/v2.1.4/cargo-sort-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/DevinR528/cargo-sort/releases/assets/669952407"
+
+[tools."github:DevinR528/cargo-sort"."platforms.linux-x64-musl"]
+checksum = "sha256:c35c3df1f2e512890ee2ffd6151aa265fbfe06accbea0d9226e0bb14d821845b"
+checksum_source = "mise-versions"
+url = "https://github.com/DevinR528/cargo-sort/releases/download/v2.1.4/cargo-sort-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/DevinR528/cargo-sort/releases/assets/669952407"
+
+[tools."github:DevinR528/cargo-sort"."platforms.macos-arm64"]
+checksum = "sha256:8969e3ed1d66d4862beb277b2b827ee8eac624a1e41d025e53e790fa0ed23839"
+checksum_source = "mise-versions"
+url = "https://github.com/DevinR528/cargo-sort/releases/download/v2.1.4/cargo-sort-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/DevinR528/cargo-sort/releases/assets/669952521"
+
+[tools."github:DevinR528/cargo-sort"."platforms.windows-x64"]
+checksum = "sha256:0c9fcce93c8436b01a486bb699d483b597f345cf6609df7d6a7309a94ba28111"
+checksum_source = "mise-versions"
+url = "https://github.com/DevinR528/cargo-sort/releases/download/v2.1.4/cargo-sort-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/DevinR528/cargo-sort/releases/assets/669953781"
+
+[[tools."github:nextest-rs/nextest"]]
+version = "0.9.151"
+backend = "github:nextest-rs/nextest"
+specifiers = ["latest"]
+
+[tools."github:nextest-rs/nextest".options]
+version_prefix = "cargo-nextest-"
+
+[tools."github:nextest-rs/nextest"."platforms.linux-arm64"]
+checksum = "sha256:3e35e8f6913af92558ba09d7155f74e35dd1f0024ef3cd891637433ae4eacbdd"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703601411"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.linux-arm64-musl"]
+checksum = "sha256:a9ee2d53cf0711d879f068c0ff814b6fe3af3f9be8799f8ab484e47571087160"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703602367"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.linux-x64"]
+checksum = "sha256:1d4ce302b820c41f4b89c5fb9bce45f0f0c94882c1cf08fc360caf08be6e7df4"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703600788"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.linux-x64-musl"]
+checksum = "sha256:6b284d6fde9670dfb6ee10ea9d9abbc85f95643d3f592472d420d82e257b3a6c"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703602745"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.macos-arm64"]
+checksum = "sha256:d1d7d025d4bfc9fb154cd76aea3949bd78534829a0589abefa6e5dd4edb135dd"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-universal-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703616437"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.macos-x64"]
+checksum = "sha256:d1d7d025d4bfc9fb154cd76aea3949bd78534829a0589abefa6e5dd4edb135dd"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-universal-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703616437"
+provenance = "github-attestations"
+
+[tools."github:nextest-rs/nextest"."platforms.windows-x64"]
+checksum = "sha256:ba35ee0ce14ace65cd8c7aaa9613adb7d2644b0fe3866e85131eb4c269786efb"
+url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-0.9.151/cargo-nextest-0.9.151-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/nextest-rs/nextest/releases/assets/703606896"
+provenance = "github-attestations"
+
+[[tools."github:taiki-e/cargo-llvm-cov"]]
+version = "0.9.1"
+backend = "github:taiki-e/cargo-llvm-cov"
+specifiers = ["latest"]
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.linux-arm64"]
+checksum = "sha256:abf5f13c1520f8756d2192bfaaeadb0208f5b7eaa8cadc15bf847befa42b7360"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403281"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.linux-arm64-musl"]
+checksum = "sha256:49c0085628392a8d727c4464d91ec417c613c5015f5197cd16d5c05aa3fb5ad1"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403283"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.linux-x64"]
+checksum = "sha256:b3f68e625481fed9b16444174f3fa5ebcdbde4a1878803a35eabe2dcefcdc41a"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403171"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.linux-x64-musl"]
+checksum = "sha256:3fca950394a3c49457657c158b1619cec8dfd2647ae5b48746734c0ab969a522"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403186"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.macos-arm64"]
+checksum = "sha256:7e821a6c90c0884f79f759f5d9be50799ade67bb82515186d922f26032ef43b8"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403359"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.macos-x64"]
+checksum = "sha256:ddf949b82a63017441ea76aa068bdd7e2dde8055f47cd3ef736fdbbd633bc33e"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547403156"
+provenance = "github-attestations"
+
+[tools."github:taiki-e/cargo-llvm-cov"."platforms.windows-x64"]
+checksum = "sha256:656590cfa13bb7478595bbfdd3bc6bc075a4f7f3f0df5a439c1856cb03c5a4d2"
+url = "https://github.com/taiki-e/cargo-llvm-cov/releases/download/v0.9.1/cargo-llvm-cov-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/taiki-e/cargo-llvm-cov/releases/assets/547404215"
 provenance = "github-attestations"
 
 [[tools.markdownlint-cli2]]
