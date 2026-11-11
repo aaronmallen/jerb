@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "[0-9]+.*"
 
 env:
   MISE_SKILLS_FETCH: "false"
@@ -97,3 +99,52 @@ jobs:
 
       - name: Test
         run: mise run test
+
+  release:
+    name: Publish release
+    if: forgejo.event_name == 'push' && startsWith(forgejo.ref, 'refs/tags/')
+    needs:
+      - lint
+      - msrv
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: https://code.forgejo.org/actions/checkout@v7
+
+      - name: Install the pinned tools
+        run: |
+          curl -fsSL https://mise.run | sh
+          echo "$HOME/.local/bin" >> "$FORGEJO_PATH"
+          "$HOME/.local/bin/mise" install --locked
+
+      - name: Extract release notes
+        env:
+          TAG: ${{ forgejo.ref_name }}
+        run: |
+          awk -v heading="## [$TAG]" '
+            /^## / { if (found) exit; found = index($0, heading) == 1; next }
+            found { print }
+            END { if (!found) exit 1 }
+          ' CHANGELOG.md > release-notes.md
+          printf '\n' >> release-notes.md
+          grep '^\[[^]]*\]:' CHANGELOG.md >> release-notes.md
+
+      - name: Publish packages
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          CARGO_REGISTRIES_FORGEJO_TOKEN: Bearer ${{ forgejo.token }}
+        run: mise run publish
+
+      - name: Create the release
+        uses: https://code.forgejo.org/actions/forgejo-release@v2.13.4
+        with:
+          direction: upload
+          url: ${{ forgejo.server_url }}
+          repo: ${{ forgejo.repository }}
+          tag: ${{ forgejo.ref_name }}
+          sha: ${{ forgejo.sha }}
+          title: v${{ forgejo.ref_name }}
+          token: ${{ forgejo.token }}
+          release-notes-file: release-notes.md
+          skip-assets: true
