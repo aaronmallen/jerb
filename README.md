@@ -1,5 +1,7 @@
 # Jerb
 
+[![Discord][discord-badge]][discord-link]
+
 Jerb is a background job library for Rust. It runs async functions on Tokio workers,
 stores jobs in a database or Redis, and handles retries and recurring schedules.
 Use it to move work out of a request handler or run tasks on a schedule while
@@ -166,5 +168,8 @@ Jerb uses the [MIT license].
 
 [architecture decisions]: docs/adr
 [changelog]: CHANGELOG.md
+[discord-badge]:
+https://img.shields.io/discord/1441938388780585062?style=for-the-badge&logo=discord&logoColor=white&label=Discord&labelColor=%235865F2
+[discord-link]: https://discord.gg/PqQdhf9VMF
 [mise]: https://mise.jdx.dev
 [MIT license]: LICENSE
