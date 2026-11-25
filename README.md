@@ -1,5 +1,8 @@
 # Jerb
 
+[![Build][build-badge]][build-workflow]
+[![Version][crates-badge]][crates.io]
+[![GitHub Sponsors][sponsor-badge]][sponsor-link]
 [![Discord][discord-badge]][discord-link]
 
 Jerb is a background job library for Rust. It runs async functions on Tokio workers,
@@ -167,9 +170,15 @@ See the [architecture decisions] for the design and the [changelog] for changes.
 Jerb uses the [MIT license].
 
 [architecture decisions]: docs/adr
+[build-badge]: https://aaronmallen.dev/aaron/jerb/actions/workflows/ci.yml/badge.svg?branch=main&style=for-the-badge
+[build-workflow]: https://aaronmallen.dev/aaron/jerb/actions?workflow=ci.yml
 [changelog]: CHANGELOG.md
+[crates-badge]: https://img.shields.io/crates/v/jerb?style=for-the-badge&logo=rust
+[crates.io]: https://crates.io/crates/jerb
 [discord-badge]:
 https://img.shields.io/discord/1441938388780585062?style=for-the-badge&logo=discord&logoColor=white&label=Discord&labelColor=%235865F2
 [discord-link]: https://discord.gg/PqQdhf9VMF
 [mise]: https://mise.jdx.dev
 [MIT license]: LICENSE
+[sponsor-badge]: https://img.shields.io/github/sponsors/aaronmallen?style=for-the-badge
+[sponsor-link]: https://github.com/sponsors/aaronmallen
